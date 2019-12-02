@@ -1,6 +1,8 @@
-package com.reactlibrary;
+package com.reactlibrarys;
 
-import android.support.v4.util.ArrayMap;
+//import androidx.util.ArrayMap;
+
+import androidx.collection.ArrayMap;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -298,6 +300,7 @@ public class PingUtil {
         long startTime = System.currentTimeMillis();
         try {
             process = Runtime.getRuntime().exec(command);
+            int status = process.waitFor();
             InputStream is = process.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder sb = new StringBuilder();
@@ -305,7 +308,7 @@ public class PingUtil {
             boolean isBreak = false;
             while (true) {
                 long currentTime = System.currentTimeMillis();
-                if (isBreak || (currentTime - startTime > timeout)) {
+                if (isBreak ) {
                     break;
                 }
                 if (reader.ready()) {
@@ -320,6 +323,8 @@ public class PingUtil {
             is.close();
             return sb.toString();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
             if (null != process) {

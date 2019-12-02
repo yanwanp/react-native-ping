@@ -1,4 +1,4 @@
-package com.reactlibrary;
+package com.reactlibrarys;
 
 public class LHDefinition {
     public enum PING_ERROR_CODE {

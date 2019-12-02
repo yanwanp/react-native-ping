@@ -1,5 +1,5 @@
 
-package com.reactlibrary;
+package com.reactlibrarys;
 
 import android.net.TrafficStats;
 import android.os.Handler;

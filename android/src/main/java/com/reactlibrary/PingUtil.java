@@ -301,6 +301,10 @@ public class PingUtil {
         try {
             process = Runtime.getRuntime().exec(command);
             int status = process.waitFor();
+            if (status == 0) {
+            } else {
+                return null;
+            }
             InputStream is = process.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(is));
             StringBuilder sb = new StringBuilder();
